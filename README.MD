@@ -79,20 +79,62 @@
 - **Model:** Mẫu cho database mới được tạo.
 - **Msdb:** Quản lý lịch trình (`jobs`) và cảnh báo.
 ## Hàm trong SQL
-### hàm ngày tháng (Date & Time)
-| Hàm	                                | Chức năng                                | Ví dụ                                                  |
-| ------------------------------------- | ---------------------------------------- | ------------------------------------------------------ |
-| **GETDATE()**	                        | Lấy ngày giờ hiện tại                    | **SELECT GETDATE();**                                  |
-| **SYSDATETIME()**	                    | Lấy ngày giờ chính xác hơn **GETDATE()** | **SELECT SYSDATETIME();**                              |
-| **DATEADD(unit, số_lượng, ngày_gốc)** | Cộng/trừ một khoảng thời gian vào ngày   | **SELECT DATEADD(DAY, 10, '2024-03-14');**             |
-| **DATEDIFF(unit, ngày1, ngày2)**	    | Tính khoảng cách giữa 2 ngày             | **SELECT DATEDIFF(YEAR, '2000-01-01', '2025-03-14');** |
-| **DATENAME(unit, ngày)**              | Trả về tên của đơn vị thời gian          | **SELECT DATENAME(WEEKDAY, GETDATE());**               |
-| **YEAR(ngày)**                        | Lấy năm của ngày                         | **SELECT YEAR(GETDATE());**                            |
-| **MONTH(ngày)**                       | Lấy tháng của ngày                       | **SELECT MONTH(GETDATE());**                           |
-| **DAY(ngày)**                         | Lấy ngày của tháng                       | **SELECT DAY(GETDATE());**                             |
+# 📌 Danh sách các hàm SQL Server cơ bản
 
+## 🔹 1. Nhóm hàm ngày tháng (Date & Time)
+| Hàm | Chức năng | Ví dụ |
+|------|----------|-------|
+| `GETDATE()` | Lấy ngày giờ hiện tại | `SELECT GETDATE();` |
+| `SYSDATETIME()` | Lấy ngày giờ chính xác hơn `GETDATE()` | `SELECT SYSDATETIME();` |
+| `DATEADD(unit, số_lượng, ngày_gốc)` | Cộng/trừ một khoảng thời gian vào ngày | `SELECT DATEADD(DAY, 10, '2024-03-14');` |
+| `DATEDIFF(unit, ngày1, ngày2)` | Tính khoảng cách giữa 2 ngày | `SELECT DATEDIFF(YEAR, '2000-01-01', '2025-03-14');` |
+| `DATENAME(unit, ngày)` | Trả về tên của đơn vị thời gian | `SELECT DATENAME(WEEKDAY, GETDATE());` |
+| `YEAR(ngày)` | Lấy năm của ngày | `SELECT YEAR(GETDATE());` |
+| `MONTH(ngày)` | Lấy tháng của ngày | `SELECT MONTH(GETDATE());` |
+| `DAY(ngày)` | Lấy ngày của tháng | `SELECT DAY(GETDATE());` |
 
-### hàm xử lý chuỗi (String Functions)
+## 🔹 2. Nhóm hàm xử lý chuỗi (String Functions)
+| Hàm | Chức năng | Ví dụ |
+|------|----------|-------|
+| `LEN(chuỗi)` | Độ dài chuỗi (không tính khoảng trắng cuối) | `SELECT LEN('Hello');` |
+| `CHARINDEX('chuỗi', nguồn)` | Tìm vị trí chuỗi con | `SELECT CHARINDEX('SQL', 'Hello SQL Server');` |
+| `LEFT(chuỗi, số_ký_tự)` | Lấy N ký tự từ trái | `SELECT LEFT('Database', 4);` → `Data` |
+| `RIGHT(chuỗi, số_ký_tự)` | Lấy N ký tự từ phải | `SELECT RIGHT('Database', 4);` → `base` |
+| `SUBSTRING(chuỗi, vị_trí, số_ký_tự)` | Cắt chuỗi con | `SELECT SUBSTRING('Hello SQL', 7, 3);` → `SQL` |
+| `UPPER(chuỗi)` | Chuyển thành chữ hoa | `SELECT UPPER('sql server');` |
+| `LOWER(chuỗi)` | Chuyển thành chữ thường | `SELECT LOWER('SQL SERVER');` |
+| `REPLACE(chuỗi, tìm, thay thế)` | Thay thế chuỗi | `SELECT REPLACE('SQL Server 2024', '2024', '2025');` |
+| `LTRIM(chuỗi)` | Xóa khoảng trắng đầu chuỗi | `SELECT LTRIM('  Hello ');` |
+| `RTRIM(chuỗi)` | Xóa khoảng trắng cuối chuỗi | `SELECT RTRIM('Hello  ');` |
+| `CONCAT(chuỗi1, chuỗi2,...)` | Nối chuỗi | `SELECT CONCAT('Hello', ' ', 'SQL');` |
+
+## 🔹 3. Nhóm hàm toán học (Math Functions)
+| Hàm | Chức năng | Ví dụ |
+|------|----------|-------|
+| `ABS(số)` | Giá trị tuyệt đối | `SELECT ABS(-10);` |
+| `CEILING(số)` | Làm tròn lên | `SELECT CEILING(4.2);` → `5` |
+| `FLOOR(số)` | Làm tròn xuống | `SELECT FLOOR(4.9);` → `4` |
+| `ROUND(số, số_làm_tròn)` | Làm tròn số | `SELECT ROUND(3.14159, 2);` → `3.14` |
+| `POWER(số, lũy_thừa)` | Lũy thừa | `SELECT POWER(2, 3);` → `8` |
+| `SQRT(số)` | Căn bậc hai | `SELECT SQRT(25);` → `5` |
+| `RAND()` | Sinh số ngẫu nhiên | `SELECT RAND();` |
+
+## 🔹 4. Nhóm hàm tổng hợp (Aggregate Functions)
+| Hàm | Chức năng | Ví dụ |
+|------|----------|-------|
+| `SUM(cột)` | Tính tổng | `SELECT SUM(Salary) FROM Employees;` |
+| `AVG(cột)` | Tính trung bình | `SELECT AVG(Age) FROM Students;` |
+| `MIN(cột)` | Lấy giá trị nhỏ nhất | `SELECT MIN(Salary) FROM Employees;` |
+| `MAX(cột)` | Lấy giá trị lớn nhất | `SELECT MAX(Salary) FROM Employees;` |
+| `COUNT(*)` | Đếm số dòng | `SELECT COUNT(*) FROM Orders;` |
+
+## 🔹 5. Nhóm hàm điều kiện (Conditional Functions)
+| Hàm | Chức năng | Ví dụ |
+|------|----------|-------|
+| `CASE WHEN ... THEN ... ELSE ... END` | Điều kiện IF-ELSE trong SQL | ```SELECT Name, CASE WHEN Age >= 18 THEN 'Adult' ELSE 'Minor' END FROM Students;``` |
+| `COALESCE(a, b, c,...)` | Trả về giá trị đầu tiên khác NULL | `SELECT COALESCE(NULL, NULL, 'Hello');` |
+| `ISNULL(cột, giá_trị_mới)` | Thay thế giá trị NULL | `SELECT ISNULL(NULL, 'No Data');` |
+
 ## Ràng buộc trong SQL
 
 ### Các loại ràng buộc phổ biến
