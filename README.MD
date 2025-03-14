@@ -2,17 +2,17 @@
 
 ## Mục lục
 
-1. [Các đặc điểm của mô hình DBMS](#-cac-dac-diem-cua-mo-hinh-dbms)
-2. [Ngôn ngữ trong DBMS](#-ngon-ngu-trong-dbms)
-   - [Ngôn ngữ định nghĩa dữ liệu (DDL)](#-ddl)
-   - [Ngôn ngữ thao tác dữ liệu (DML)](#-dml)
-3. [Phân loại End-Users](#-phan-loai-end-users)
-4. [Trách nhiệm của DBA](#-trach-nhiem-cua-dba)
-5. [Tổ chức CSDL](#-to-chuc-csdl)
-6. [RAID và Lưu trữ](#-raid-va-luu-tru)
-7. [Database trong SQL Server](#-database-trong-sql-server)
-8. [Quản trị đối tượng CSDL](#-quan-tri-doi-tuong-csdl)
-9. [Ràng buộc trong SQL](#-rang-buoc-trong-sql)
+1. [Các đặc điểm của mô hình DBMS](#cac-dac-diem-cua-mo-hinh-dbms)
+2. [Ngôn ngữ trong DBMS](#ngon-ngu-trong-dbms)
+   - [Ngôn ngữ định nghĩa dữ liệu (DDL)](#ddl)
+   - [Ngôn ngữ thao tác dữ liệu (DML)](#dml)
+3. [Phân loại End-Users](#phan-loai-end-users)
+4. [Trách nhiệm của DBA](#trach-nhiem-cua-dba)
+5. [Tổ chức CSDL](#to-chuc-csdl)
+6. [RAID và Lưu trữ](#raid-va-luu-tru)
+7. [Database trong SQL Server](#database-trong-sql-server)
+8. [Quản trị đối tượng CSDL](#quan-tri-doi-tuong-csdl)
+9. [Ràng buộc trong SQL](#rang-buoc-trong-sql)
 
 ---
 
