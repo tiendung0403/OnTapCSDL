@@ -2,17 +2,17 @@
 
 ## Mục lục
 
-1. [Các đặc điểm của mô hình DBMS](#cac-dac-diem-cua-mo-hinh-dbms)
-2. [Ngôn ngữ trong DBMS](#ngon-ngu-trong-dbms)
-   - [Ngôn ngữ định nghĩa dữ liệu (DDL)](#ddl)
-   - [Ngôn ngữ thao tác dữ liệu (DML)](#dml)
-3. [Phân loại End-Users](#phan-loai-end-users)
-4. [Trách nhiệm của DBA](#trach-nhiem-cua-dba)
-5. [Tổ chức CSDL](#to-chuc-csdl)
-6. [RAID và Lưu trữ](#raid-va-luu-tru)
-7. [Database trong SQL Server](#database-trong-sql-server)
-8. [Quản trị đối tượng CSDL](#quan-tri-doi-tuong-csdl)
-9. [Ràng buộc trong SQL](#rang-buoc-trong-sql)
+1. [Các đặc điểm của mô hình DBMS](#-cac-dac-diem-cua-mo-hinh-dbms)
+2. [Ngôn ngữ trong DBMS](#-ngon-ngu-trong-dbms)
+   - [Ngôn ngữ định nghĩa dữ liệu (DDL)](#-ddl)
+   - [Ngôn ngữ thao tác dữ liệu (DML)](#-dml)
+3. [Phân loại End-Users](#-phan-loai-end-users)
+4. [Trách nhiệm của DBA](#-trach-nhiem-cua-dba)
+5. [Tổ chức CSDL](#-to-chuc-csdl)
+6. [RAID và Lưu trữ](#-raid-va-luu-tru)
+7. [Database trong SQL Server](#-database-trong-sql-server)
+8. [Quản trị đối tượng CSDL](#-quan-tri-doi-tuong-csdl)
+9. [Ràng buộc trong SQL](#-rang-buoc-trong-sql)
 
 ---
 
@@ -81,7 +81,7 @@
 ## Hàm trong SQL
 # 📌 Danh sách các hàm SQL Server cơ bản
 
-## 🔹 1. Nhóm hàm ngày tháng (Date & Time)
+## Nhóm hàm ngày tháng (Date & Time)
 | Hàm | Chức năng | Ví dụ |
 |------|----------|-------|
 | `GETDATE()` | Lấy ngày giờ hiện tại | `SELECT GETDATE();` |
@@ -93,7 +93,7 @@
 | `MONTH(ngày)` | Lấy tháng của ngày | `SELECT MONTH(GETDATE());` |
 | `DAY(ngày)` | Lấy ngày của tháng | `SELECT DAY(GETDATE());` |
 
-## 🔹 2. Nhóm hàm xử lý chuỗi (String Functions)
+## Nhóm hàm xử lý chuỗi (String Functions)
 | Hàm | Chức năng | Ví dụ |
 |------|----------|-------|
 | `LEN(chuỗi)` | Độ dài chuỗi (không tính khoảng trắng cuối) | `SELECT LEN('Hello');` |
@@ -108,7 +108,7 @@
 | `RTRIM(chuỗi)` | Xóa khoảng trắng cuối chuỗi | `SELECT RTRIM('Hello  ');` |
 | `CONCAT(chuỗi1, chuỗi2,...)` | Nối chuỗi | `SELECT CONCAT('Hello', ' ', 'SQL');` |
 
-## 🔹 3. Nhóm hàm toán học (Math Functions)
+## Nhóm hàm toán học (Math Functions)
 | Hàm | Chức năng | Ví dụ |
 |------|----------|-------|
 | `ABS(số)` | Giá trị tuyệt đối | `SELECT ABS(-10);` |
@@ -119,7 +119,7 @@
 | `SQRT(số)` | Căn bậc hai | `SELECT SQRT(25);` → `5` |
 | `RAND()` | Sinh số ngẫu nhiên | `SELECT RAND();` |
 
-## 🔹 4. Nhóm hàm tổng hợp (Aggregate Functions)
+## Nhóm hàm tổng hợp (Aggregate Functions)
 | Hàm | Chức năng | Ví dụ |
 |------|----------|-------|
 | `SUM(cột)` | Tính tổng | `SELECT SUM(Salary) FROM Employees;` |
@@ -128,7 +128,7 @@
 | `MAX(cột)` | Lấy giá trị lớn nhất | `SELECT MAX(Salary) FROM Employees;` |
 | `COUNT(*)` | Đếm số dòng | `SELECT COUNT(*) FROM Orders;` |
 
-## 🔹 5. Nhóm hàm điều kiện (Conditional Functions)
+## Nhóm hàm điều kiện (Conditional Functions)
 | Hàm | Chức năng | Ví dụ |
 |------|----------|-------|
 | `CASE WHEN ... THEN ... ELSE ... END` | Điều kiện IF-ELSE trong SQL | ```SELECT Name, CASE WHEN Age >= 18 THEN 'Adult' ELSE 'Minor' END FROM Students;``` |
@@ -228,7 +228,4 @@ ADD CONSTRAINT CK_SinhVien_Diem CHECK (Diem >= 0 AND Diem <= 10);
 EXEC sp_helpdb 'Testdb';
 ```
 
----
-
-**📌 Ghi chú:** Đây là bản cập nhật chuẩn hóa README.md giúp bạn dễ đọc và tra cứu hơn. 🚀
 
