@@ -78,7 +78,21 @@
 - **Tempdb:** Giữ bảng tạm (`temporary tables`).
 - **Model:** Mẫu cho database mới được tạo.
 - **Msdb:** Quản lý lịch trình (`jobs`) và cảnh báo.
+## Hàm trong SQL
+### hàm ngày tháng (Date & Time)
+| Hàm	                                | Chức năng                                | Ví dụ                                                  |
+| ------------------------------------- | ---------------------------------------- | ------------------------------------------------------ |
+| **GETDATE()**	                        | Lấy ngày giờ hiện tại                    | **SELECT GETDATE();**                                  |
+| **SYSDATETIME()**	                    | Lấy ngày giờ chính xác hơn **GETDATE()** | **SELECT SYSDATETIME();**                              |
+| **DATEADD(unit, số_lượng, ngày_gốc)** | Cộng/trừ một khoảng thời gian vào ngày   | **SELECT DATEADD(DAY, 10, '2024-03-14');**             |
+| **DATEDIFF(unit, ngày1, ngày2)**	    | Tính khoảng cách giữa 2 ngày             | **SELECT DATEDIFF(YEAR, '2000-01-01', '2025-03-14');** |
+| **DATENAME(unit, ngày)**              | Trả về tên của đơn vị thời gian          | **SELECT DATENAME(WEEKDAY, GETDATE());**               |
+| **YEAR(ngày)**                        | Lấy năm của ngày                         | **SELECT YEAR(GETDATE());**                            |
+| **MONTH(ngày)**                       | Lấy tháng của ngày                       | **SELECT MONTH(GETDATE());**                           |
+| **DAY(ngày)**                         | Lấy ngày của tháng                       | **SELECT DAY(GETDATE());**                             |
 
+
+### hàm xử lý chuỗi (String Functions)
 ## Ràng buộc trong SQL
 
 ### Các loại ràng buộc phổ biến
@@ -134,6 +148,36 @@ ALTER TABLE NhanVien ADD CONSTRAINT UQ_NhanVien_Email UNIQUE (Email);
 
 -- Xóa ràng buộc UNIQUE
 ALTER TABLE NhanVien DROP CONSTRAINT UQ_NhanVien_Email;
+-- Thêm NOT NULL vào cột đã tồn tại
+ALTER TABLE NhanVien 
+ALTER COLUMN MaNV INT NOT NULL;
+
+-- Thêm NULL cho cột ALTER TABLE MonHoc 
+ALTER TABLE NhanVien
+ALTER COLUMN MaNV INT NULL;
+
+-- Ràng buộc CHECK kiểm tra điều kiện 
+CREATE TABLE SinhVien (
+    MaSV INT PRIMARY KEY,
+    HoTen NVARCHAR(100),
+    Diem FLOAT CHECK (Diem >= 0 AND Diem <= 10) -- Điểm chỉ từ 0 đến 10
+);
+
+-- Ràng buộc DEFAULT giá trị mặc định 
+CREATE TABLE NhanVien (
+    MaNV INT PRIMARY KEY,
+    HoTen NVARCHAR(100),
+    TrangThai BIT DEFAULT 1 -- Mặc định là "đang làm việc" (1)
+);
+-- Thêm ràng buộc khi đã tạo bảng 
+ALTER TABLE NhanVien 
+ADD CONSTRAINT DF_NhanVien_TrangThai DEFAULT 1 FOR TrangThai;
+
+-- Thêm ràng buộc CHECK khi đã tạo bảng 
+ALTER TABLE SinhVien 
+ADD CONSTRAINT CK_SinhVien_Diem CHECK (Diem >= 0 AND Diem <= 10);
+
+
 ```
 
 ## Kiểm tra thông tin database
