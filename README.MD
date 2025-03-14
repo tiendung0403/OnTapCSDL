@@ -94,8 +94,9 @@ cho phép xác định sơ đồ bằng đặc tả dư liệu (data dictionary)
 # Table
     dùng để lưu trữ dữ liệu trong 1 bảng 2 chiều 
     Đặt tên : không khoảng trắng không viết tắt ,có ý nghĩa ,số ít
+
 ```SQL
--- kiểu dữ liệu 
+#kiểu dữ liệu 
 TINYINT 0 -> 255
 SMALLINT 2 byte
 int 4 byte
@@ -107,8 +108,9 @@ varbinary nhị phân thay đổi
 VARBINARY(MAX) để lưu ảnh ,file
 XML
 JSON
+ 
 --   CÁC LOẠI RÀNG BUỘC
-__________________________________________________________
+____________________________________________________________________________________
 PRIMARY KEY | (KHÓA CHÍNH) ĐỊNH DANH DUY NHẤT CHO DÒNG , NOT NULL ,KHÔNG TRÙNG
 FOREIGN KEY | LIÊN KẾT GIỮA HAI BẢNG (KHÓA NGOẠI)
 UNIQUE  | ĐẢM BẢO DỮ LIỆU TRONG CỘT LÀ DUY NHẤT
