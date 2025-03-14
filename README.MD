@@ -96,7 +96,7 @@ cho phép xác định sơ đồ bằng đặc tả dư liệu (data dictionary)
     Đặt tên : không khoảng trắng không viết tắt ,có ý nghĩa ,số ít
 
 ```SQL
-#kiểu dữ liệu 
+# kiểu dữ liệu 
 TINYINT 0 -> 255
 SMALLINT 2 byte
 int 4 byte
