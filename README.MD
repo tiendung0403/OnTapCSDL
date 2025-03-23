@@ -230,10 +230,11 @@ EXEC sp_helpdb 'Testdb';
 ## Collation
 
 | Collation | Phân biệt hoa thường | Phân biệt có giấu | Ví dụ             |
-| CI_AS     | Không                | Có                | DũNG , Dũng       |
-| CI_AI     | Không                | Không             | Dũng ,DUng , DŨNG |
-| CS_AS     | Có                   | Có                | Dũng  |
-| CS_AI     | Có                   | Không             | Dũng ,Dung |
+| --------- | -------------------- | ----------------- | ----------------- |
+| `CI_AS `| `Không`| `Có`                | `DũNG , Dũng`       |
+| `CI_AI`     | `Không`                | `Không`             | `Dũng ,DUng , DŨNG `|
+| `CS_AS`     | `Có`                   |` Có `               | `Dũng ` |
+|`CS_AI`    | `Có `                  | `Không `            | `Dũng ,Dung` |
 
 
 
