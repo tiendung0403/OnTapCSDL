@@ -235,6 +235,35 @@ EXEC sp_helpdb 'Testdb';
 | `CI_AI`     | `Không`                | `Không`             | `Dũng ,DUng , DŨNG `|
 | `CS_AS`     | `Có`                   |` Có `               | `Dũng ` |
 |`CS_AI`    | `Có `                  | `Không `            | `Dũng ,Dung` |
+### ví dụ
+```sql
+SELECT * FROM BANH
+WHERE TenSP LIKE 'Bánh%'
+COLLATE LATIN1_GENERAL_CS_AI;
+```
+## Một số table đặc biệt
+### Bảng tạm (temporary tabe)
+dùng để lưu trữ dữ liệu tạm thời trong quá trình sử lý , dữ liệu của table sẽ lưu trong tempdb
+cách tạo như bình thường nhưng tên bắt đầu bằng giấu `#(local)` hoặc `##(Global)`
+khi kết thúc quá trình sử lí table sẽ tự động xóa đi
+#### Cách tạo 1:
+```sql
+CREATE TABLE #SINHVIEN(
+    MA CHAR(5),
+    DIEM INT
+);
+
+------ CÁCH DÙNG
+SELECT * FROM #SINHVIEN
+INSERT INTO #SINHVIEN VALUES ('SM',5);
+
+```
+#### Cách tạo 2
+```sql
+SELECT MA,TEN,DIEM INTO # TEMP1
+FROM SINHVIEN
+WHERE MA = 'MS1'
+```
 
 
 
