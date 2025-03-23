@@ -265,6 +265,103 @@ FROM SINHVIEN
 WHERE MA = 'MS1'
 ```
 
+### CTE (Common Table Expression)
+chứa dữ liệu tạm thời được định nghĩa của nó 
+- không lưu trữ như một đối tượng và chỉ tồn tại trong suốt thời gian của câu truy vấn
+- cho phép nhóm một cột từ truy vấn con
+- Có thể tham chiếu đến bản thân nó nhiều lần trong một câu truy vấn
+- Có thể dùng để truy vấn đệ quy
+- Sử dụng thay thế view trong một số trường hợp
+
+#### Cách tạo 
+```sql
+WITH 
+    thu AS (SELECT NgayThu, SUM(sotien) AS TongThu
+            FROM PhieuThu 
+            GROUP BY NgayThu),
+    chi AS (SELECT NgayChi, SUM(sotien) AS TongChi
+            FROM PhieuChi
+            GROUP BY NgayChi)
+
+SELECT ISNULL(ngaythu,ngaychi) AS ngay,TongThu, TongChi
+FROM thu FULL JOIN chi ON ngaythu=ngaychi
+
+-----------------
+WITH 
+    ThuChi(ngay, thu, chi) AS (
+        SELECT NgayThu, sotien, 0
+        FROM PhieuThu
+        UNION ALL
+        SELECT NgayChi, 0, sotien
+        FROM PhieuChi
+    )
+
+SELECT Ngay, sum(thu) AS TongThu, sum(chi) AS TongChi
+FROM ThuChi
+GROUP BY Ngay
+
+--------- ĐỆ QUY
+
+WITH cte100(n) AS (
+SELECT 10
+UNION ALL
+SELECT n+10 FROM cte100 WHERE n<100
+)
+SELECT * FROM cte100;
+```
+
+### Memory-Optimized Table
+- dữ liệu được lưu trữ trong bộ nhớ ram
+- một bản copy sẽ được lưu vào ổ cứng để đảm bảo an toàn dữ liệu 
+- dữ liệu chỉ được đọc lại từ ổ cứng khi quá trình recovery
+#### Cách tạo
+```sql
+--- NẾU ĐÃ CÓ DATABASE
+ALTER DATABASE TENDB
+ADD FILEGROUP TENDB CONTAINS MEMORY_OPTIMIZED_DATA;
+---CONTAINS MEMORY_OPTIMIZED_DATA báo cho SQL biết đây là filegroup chứa bảng RAM.
+
+ALTER DATABASE ThucTap  
+ADD FILE  
+(name = [file_mem], filename='D:\SQLDB\file_mem.db')  
+TO FILEGROUP ThucTap;
+--- TẠO BẢN BACKUP VẬT LÝ 
+
+--- TẠO BẢNG LƯU TRỮ TRÊN RAM
+CREATE TABLE NGOAITE(
+    MaNT CHAR(4) PRIMARY KEY NONCLUSTERED,
+    TenNT NVARCHAR(100),
+    MuaTienMat DECIMAL(18,2) DEFAULT 0,
+    MuaChuyenKhoan DECIMAL(18,2) DEFAULT 0,
+    Ban DECIMAL(18,2) DEFAULT 0
+) WITH (
+    MEMORY_OPTIMIZED = ON
+    DURABILITY = SCHEMA_AND_DATA
+    );
+
+INSERT INTO NGOAITE VALUES 
+('USD', N'Đô la Mỹ', 23500.00, 23450.00, 23600.00),
+('EUR', N'Euro', 25600.00, 25500.00, 25700.00),
+('JPY', N'Yên Nhật', 170.50, 169.80, 171.20),
+('CNY', N'Nhân dân tệ', 3300.00, 3290.00, 3310.00);
+```
+### Partitioned Tables (Bảng phân mảnh)
+- Table partitioning là phân chia các dòng dữ liệu trong bảng thành các phần nhỏ
+  có thể lưu các mảnh thành các filegroup khác nhau
+#### Partition function:
+    Chia khoảng dữ liệu
+#### Partition Scheme
+    Gắn mỗi khoảng vào đâu (filegroup nào)
+### Bảng hoặc chỉ mục sử dụng Partition
+   Dữ liệu tự động chia vùng khi insert
+### cách tạo Partition Function
+Phân mảnh dựa vào giá trị là số
+```sql
+CREATE PARTITION FUNCTION PartFunc1(INT)
+AS RANGE LEFT FOR VALUES (1000, 2000, 3000)
+```
+
+
 
 
 
